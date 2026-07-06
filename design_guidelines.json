@@ -1,0 +1,173 @@
+{
+  "theme": "Dark Mode",
+  "archetype": "5 (Luxury) mixed with 7 (Electric/Neon accents) - Premium Japanese Aesthetic",
+  "core_philosophy": "Every screen must feel expensive. No cluttered layouts. Use spacing similar to Apple apps (generous padding, precise optical alignment). Avoid generic gradients; use solid deep backgrounds with subtle glassmorphism and crisp 1px borders.",
+  "colors": {
+    "primary": "#FF4FC3",
+    "secondary": "#8B5CF6",
+    "background": "#111111",
+    "card": "#1B1B1B",
+    "success": "#22C55E",
+    "warning": "#F59E0B",
+    "danger": "#EF4444",
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "#A1A1AA",
+      "tertiary": "#71717A",
+      "japanese_highlight": "#FF4FC3"
+    },
+    "border": {
+      "default": "#27272A",
+      "focus": "#FF4FC3"
+    },
+    "overlay": {
+      "dark": "rgba(0,0,0,0.7)",
+      "glass": "rgba(27,27,27,0.6)"
+    }
+  },
+  "typography": {
+    "fonts": {
+      "headings": "SF Pro Display",
+      "body": "Inter",
+      "japanese": "Noto Sans JP"
+    },
+    "scale": {
+      "h1": { "fontSize": 40, "lineHeight": 48, "fontWeight": "800", "letterSpacing": -1 },
+      "h2": { "fontSize": 32, "lineHeight": 40, "fontWeight": "700", "letterSpacing": -0.5 },
+      "h3": { "fontSize": 24, "lineHeight": 32, "fontWeight": "600", "letterSpacing": -0.3 },
+      "body_large": { "fontSize": 18, "lineHeight": 28, "fontWeight": "400" },
+      "body_main": { "fontSize": 16, "lineHeight": 24, "fontWeight": "400" },
+      "body_small": { "fontSize": 14, "lineHeight": 20, "fontWeight": "500", "color": "#A1A1AA" },
+      "japanese_large": { "fontSize": 32, "lineHeight": 44, "fontFamily": "Noto Sans JP", "fontWeight": "700" },
+      "japanese_body": { "fontSize": 18, "lineHeight": 28, "fontFamily": "Noto Sans JP", "fontWeight": "500" },
+      "romaji": { "fontSize": 14, "lineHeight": 20, "fontWeight": "500", "color": "#8B5CF6" }
+    }
+  },
+  "spacing": {
+    "xs": 4,
+    "sm": 8,
+    "md": 16,
+    "lg": 24,
+    "xl": 32,
+    "2xl": 48,
+    "3xl": 64,
+    "screen_padding": 24
+  },
+  "layout_and_borders": {
+    "radius": {
+      "sm": 8,
+      "md": 16,
+      "lg": 24,
+      "xl": 32,
+      "full": 9999
+    },
+    "card_style": {
+      "backgroundColor": "#1B1B1B",
+      "borderRadius": 24,
+      "borderWidth": 1,
+      "borderColor": "#27272A",
+      "padding": 24
+    }
+  },
+  "components": {
+    "button_primary": {
+      "backgroundColor": "#FF4FC3",
+      "borderRadius": 9999,
+      "paddingVertical": 16,
+      "paddingHorizontal": 32,
+      "alignItems": "center",
+      "shadowColor": "#FF4FC3",
+      "shadowOffset": { "width": 0, "height": 8 },
+      "shadowOpacity": 0.3,
+      "shadowRadius": 16,
+      "elevation": 10
+    },
+    "button_secondary": {
+      "backgroundColor": "transparent",
+      "borderRadius": 9999,
+      "borderWidth": 1,
+      "borderColor": "#27272A",
+      "paddingVertical": 16,
+      "paddingHorizontal": 32,
+      "alignItems": "center"
+    },
+    "tab_bar": {
+      "backgroundColor": "rgba(17,17,17,0.8)",
+      "borderTopWidth": 0,
+      "height": 90,
+      "paddingBottom": 30,
+      "paddingTop": 10
+    },
+    "floating_action": {
+      "backgroundColor": "#FF4FC3",
+      "width": 64,
+      "height": 64,
+      "borderRadius": 32,
+      "alignItems": "center",
+      "justifyContent": "center",
+      "position": "absolute",
+      "bottom": 40,
+      "alignSelf": "center"
+    },
+    "chat_bubble_ai": {
+      "backgroundColor": "#1B1B1B",
+      "borderRadius": 20,
+      "borderBottomLeftRadius": 4,
+      "padding": 16,
+      "borderWidth": 1,
+      "borderColor": "#27272A"
+    },
+    "chat_bubble_user": {
+      "backgroundColor": "#8B5CF6",
+      "borderRadius": 20,
+      "borderBottomRightRadius": 4,
+      "padding": 16
+    },
+    "progress_ring": {
+      "trackColor": "#27272A",
+      "fillColor": "#FF4FC3",
+      "thickness": 8,
+      "strokeLinecap": "round"
+    },
+    "streak_flame": {
+      "icon": "flame",
+      "color": "#F59E0B"
+    }
+  },
+  "screens": {
+    "Onboarding": "Hero image (torii gate night) with dark overlay. Title 'Master Japanese', subtitle in Noto Sans. JLPT level selection uses elegant large cards. Bottom fixed Primary Button.",
+    "Home": "Daily Goal ring (Apple Fitness style) at top. Streak flame prominent. 'Continue Learning' large card with subtle #8B5CF6 glow. Horizontal carousel of Recommended Lessons. Recent conversations list.",
+    "Chat": "Main AI chat interface. Bubbles show large Japanese text, small romaji below, and tap-to-expand translation. Floating Mic button at bottom right (Press-to-talk). Inline grammar tags (JLPT N5/N4).",
+    "Speaking_Practice": "Immersive dark screen. Massive centered 'Orb' (using Reanimated) that pulses when speaking. Real-time waveform. 4-metric score cards (Pronunciation, Fluency, Accuracy, Naturalness) appear after processing.",
+    "Scenario_Picker": "Grid layout (2 columns). Each scenario card has a subtle dark Japanese background image, title, XP badge, and difficulty indicator. 12 scenarios (Restaurant, Convenience Store, etc.).",
+    "Scenario_Play": "Objective checklist at the top (glassmorphism header). Role-play chat interface below. AI acts as the character (e.g., store clerk).",
+    "Grammar_Library": "Segmented control for JLPT levels (N5-N1). Expandable accordion cards. Each card shows rule, formula, and beautiful example sentences with audio icons.",
+    "Vocab_Flashcards": "Tinder-style swipeable cards or standard flip cards with 3D animation (Reanimated). Front: Huge Kanji. Back: Reading, Romaji, Meaning, Example.",
+    "JLPT_Hub": "5 massive cards stacked, each showing % progress. Entry point for mock tests. Sectional progress bars (Listening, Vocab, Grammar, Reading).",
+    "Dashboard": "Apple Activity style rings. Bar charts for weekly XP. Heatmap for daily study streak. Grid of beautiful achievement badges (locked are grayscale, unlocked are vibrant).",
+    "Settings": "Standard iOS style grouped list. Theme, Voice speed, Native Language, Subscription management (Premium shiny card at top)."
+  },
+  "animations": {
+    "page_transition": "Fade and slight scale-up (0.95 to 1.0) using React Navigation/Reanimated.",
+    "button_press": "Scale down to 0.95 with high spring stiffness.",
+    "speaking_orb": "Continuous breathing scale (1.0 to 1.1) with blur shadow expansion.",
+    "card_flip": "3D rotateY interpolation from 0deg to 180deg.",
+    "skeleton_loading": "Shimmer effect across #1B1B1B cards using linear gradient translation."
+  },
+  "image_urls": {
+    "hero_torii": "https://images.unsplash.com/photo-1771893327514-842e33b8bf85?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODd8MHwxfHNlYXJjaHwxfHx0b3JpaSUyMGdhdGUlMjBuaWdodCUyMGRhcmslMjBtb29keXxlbnwwfHx8fDE3ODMzNTc1NjN8MA&ixlib=rb-4.1.0&q=85",
+    "hero_sakura": "https://images.unsplash.com/photo-1710216106278-a64505ca2141?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODd8MHwxfHNlYXJjaHwyfHxzYWt1cmElMjBjaGVycnklMjBibG9zc29tcyUyMG5pZ2h0fGVufDB8fHx8MTc4MzM1NzU2NHww&ixlib=rb-4.1.0&q=85",
+    "hero_tokyo_street": "https://images.unsplash.com/photo-1601042879364-f3947d3f9c16?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwxfHx0b2t5byUyMHN0cmVldCUyMG5pZ2h0JTIwbmVvbnxlbnwwfHx8fDE3ODMzNTc1NjR8MA&ixlib=rb-4.1.0&q=85",
+    "texture_dark": "https://images.unsplash.com/photo-1721587887543-33e4fb11107d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1ODR8MHwxfHNlYXJjaHwxfHxqYXBhbmVzZSUyMG1pbmltYWwlMjBkYXJrJTIwdGV4dHVyZXxlbnwwfHx8fDE3ODMzNTc1NjR8MA&ixlib=rb-4.1.0&q=85"
+  },
+  "instructions_to_main_agent": [
+    "This is an Expo React Native app. DO NOT use DOM elements like div, span, or standard CSS classes. Use View, Text, Image, ScrollView from react-native.",
+    "Use StyleSheet.create or Nativewind if configured. Map exactly to the provided color tokens and spacing.",
+    "CRITICAL: Add 'testID' to all interactive and key informational elements (e.g. testID='login-form-submit-button') for React Native Testing Library. Also use 'data-testid' if running on web.",
+    "Use @expo/vector-icons (Feather or Ionicons) for iconography.",
+    "Implement file-based routing with expo-router.",
+    "Do NOT use generic gradients. Rely on solid dark backgrounds (#111111) and dark cards (#1B1B1B) with precise 1px borders (#27272A).",
+    "Implement bottom tab navigator with a floating center button.",
+    "Use react-native-reanimated for any smooth transitions or gestures (like swipeable flashcards or speaking orb)."
+  ]
+}
