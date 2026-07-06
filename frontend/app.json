@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.emergent.kanjiflow.x00xit"
+      "bundleIdentifier": "com.kaiwatest.app"
     },
     "android": {
       "adaptiveIcon": {
@@ -18,7 +18,7 @@
         "backgroundColor": "#000000"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.emergent.kanjiflow.x00xit"
+      "package": "com.kaiwatest.app"
     },
     "web": {
       "bundler": "metro",

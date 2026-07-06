@@ -8,16 +8,14 @@ import re
 from pathlib import Path
 from pydantic import BaseModel, Field
 from typing import List, Optional, Literal
-
-from emergentintegrations.llm.chat import LlmChat, UserMessage
+import anthropic
 
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / ".env")
 
-EMERGENT_LLM_KEY = os.environ["EMERGENT_LLM_KEY"]
-MODEL_PROVIDER = "anthropic"
-MODEL_NAME = "claude-haiku-4-5-20251001"
+CLAUDE_API_KEY = os.environ.get("CLAUDE_API_KEY") or os.environ.get("ANTHROPIC_API_KEY")
+MODEL_NAME = "claude-3-5-haiku-20241022"
 
 app = FastAPI()
 api_router = APIRouter(prefix="/api")
@@ -139,25 +137,25 @@ async def root():
 @api_router.post("/chat", response_model=ChatResponse)
 async def chat(req: ChatRequest):
     try:
-        chat_client = LlmChat(
-            api_key=EMERGENT_LLM_KEY,
-            session_id=req.session_id,
-            system_message=_system_prompt(req.jlpt_level, req.native_language, req.scenario),
-        ).with_model(MODEL_PROVIDER, MODEL_NAME)
-
-        # Prepend history as a compact context inside the current user message
-        # (emergentintegrations LlmChat manages its own session but we want
-        # deterministic short-context per call from client-side history).
-        context_snippet = ""
+        client = anthropic.Anthropic(api_key=CLAUDE_API_KEY)
+        
+        # Build message history
+        messages = []
         if req.history:
-            recent = req.history[-8:]
-            lines = [f"{t.role.upper()}: {t.text}" for t in recent]
-            context_snippet = "Prior turns (for context):\n" + "\n".join(lines) + "\n\n"
+            for turn in req.history[-8:]:
+                messages.append({"role": turn.role, "content": turn.text})
+        
+        messages.append({"role": "user", "content": f"Learner says: {req.message}"})
 
-        user_text = f"{context_snippet}Learner says: {req.message}"
-
-        result = await chat_client.send_message(UserMessage(text=user_text))
-        parsed = _extract_json(result)
+        response = client.messages.create(
+            model=MODEL_NAME,
+            max_tokens=1024,
+            system=_system_prompt(req.jlpt_level, req.native_language, req.scenario),
+            messages=messages
+        )
+        
+        result_text = response.content[0].text
+        parsed = _extract_json(result_text)
         # Guarantee all fields
         parsed.setdefault("vocabulary", [])
         parsed.setdefault("suggestions", [])
@@ -195,13 +193,15 @@ Be fair: transcription errors count as low accuracy. Do not wrap in code fences.
         f"Learner spoken (STT): {req.spoken_text}"
     )
     try:
-        client = LlmChat(
-            api_key=EMERGENT_LLM_KEY,
-            session_id=f"pron-{req.target_japanese[:20]}",
-            system_message=system,
-        ).with_model(MODEL_PROVIDER, MODEL_NAME)
-        result = await client.send_message(UserMessage(text=user_text))
-        parsed = _extract_json(result)
+        client = anthropic.Anthropic(api_key=CLAUDE_API_KEY)
+        response = client.messages.create(
+            model=MODEL_NAME,
+            max_tokens=1024,
+            system=system,
+            messages=[{"role": "user", "content": user_text}]
+        )
+        result_text = response.content[0].text
+        parsed = _extract_json(result_text)
         parsed.setdefault("word_feedback", [])
         parsed.setdefault("ai_suggestion", "")
         return PronunciationResponse(**parsed)
@@ -212,7 +212,7 @@ Be fair: transcription errors count as low accuracy. Do not wrap in code fences.
 
 @api_router.get("/health")
 async def health():
-    return {"status": "ok", "model": f"{MODEL_PROVIDER}/{MODEL_NAME}"}
+    return {"status": "ok", "model": MODEL_NAME}
 
 
 app.include_router(api_router)
